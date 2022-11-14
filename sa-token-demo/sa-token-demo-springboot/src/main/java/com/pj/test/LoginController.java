@@ -30,6 +30,9 @@ public class LoginController {
 	@RequestMapping("isLogin")
 	public SaResult isLogin() {
 		return SaResult.ok("是否登录：" + StpUtil.isLogin());
+		// 2022/11/14 这里还不知道为啥apifox中登录成功了，检测是："msg": "是否登录：false"。浏览器是："msg":"是否登录：true"。可能也是用了什么token？
+		// 看到了 浏览器中用了一个cookie来实现的，只需要在apifox中将登录响应返回的sa-token保存到全局变量中就行了。
+
 	}
 
 	// 查询 Token 信息  ---- http://localhost:8081/acc/tokenInfo
@@ -44,5 +47,10 @@ public class LoginController {
 		StpUtil.logout();
 		return SaResult.ok();
 	}
+
+
+
+
+
 	
 }
